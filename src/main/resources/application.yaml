@@ -13,8 +13,15 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  threads:
+    virtual:
+      enabled: true
 
 server:
   servlet:
     context-path: /api/v1
+  tomcat:
+    threads:
+      max: 200
+
 
