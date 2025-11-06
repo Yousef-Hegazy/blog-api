@@ -2,6 +2,7 @@ package com.yousef.blog.mappers;
 
 import com.yousef.blog.domain.PostStatus;
 import com.yousef.blog.domain.dtos.CategoryDto;
+import com.yousef.blog.domain.dtos.CreateCategoryRequest;
 import com.yousef.blog.domain.entities.Category;
 import com.yousef.blog.domain.entities.Post;
 import org.mapstruct.Mapper;
@@ -16,6 +17,8 @@ public interface CategoryMapper {
 
     @Mapping(target = "postCount", source = "posts", qualifiedByName = "calculatePostCount")
     CategoryDto toDto(Category category);
+
+    Category toEntity(CreateCategoryRequest categoryDto);
 
     @Named("calculatePostCount")
     default long calculatePostCount(List<Post> posts) {
