@@ -2,17 +2,21 @@ spring:
   application:
     name: blog
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: admin
+    url: jdbc:h2:file:./testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.H2Dialect
   threads:
     virtual:
       enabled: true
@@ -24,6 +28,4 @@ server:
     threads:
       max: 200
 
-jwt:
-  secret: 96df788c7c906a9e865b83725b4f415327a35628603321ca83032b2ea2aaf672
-  expiration: 86400000
+
